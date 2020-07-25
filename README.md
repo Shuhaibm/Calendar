@@ -13,13 +13,13 @@ every month, and list out all the things I needed to get done. These included:
 
 I will stop wasting paper and take advantage of technology by creating a calendar application. I will
 use this application instead of what I have been doing up until now. The application will present a 
-monhtly calendar, where the user can add items to a specific day, and check them off when they have 
+monthly calendar, where the user can add items to a specific day, and check them off when they have 
 been completed. 
 
-
+w
 ## User Stories
 - As a user, I want to be able to add an objective to any day in my Calendar
 - As a user, I want to be able to check off an objective and mark it complete
 - As a user, I want to be able to remove an objective from a day in my Calendar
-- As a user, I want to be able to be able to select a month and its corresponding calendar
+
 
