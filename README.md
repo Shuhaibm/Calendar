@@ -17,3 +17,8 @@ monhtly calendar, where the user can add items to a specific day, and check them
 been completed. 
 
 
+## User Stories
+- As a user, I want to be able to add an objective to any day in my Calendar
+- As a user, I want to be able to check off an objective and mark it complete
+- As a user, I want to be able to remove an objective from a day in my Calendar
+
