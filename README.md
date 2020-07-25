@@ -1,11 +1,19 @@
 # My Personal Project
 
-## A subtitle
+## Calendar
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+All throughout highschool, my teachers **constantly** encouraged the use of agendas, but I never found 
+the need to use one. However, once I entered university, it immediately became clear that an agenda
+would make my life much easier, and help me stay on top of classes. I began to print out a calendar
+every month, and list out all the things I needed to get done. These included:
+- Assignments
+- Forms/Paperwork
+- Meetings
+- Events 
 
-An example of text with **bold** and *italic* fonts.  Note that the IntelliJ markdown previewer doesn't seem to render 
-the bold and italic fonts correctly but they will appear correctly on GitHub.
+I will stop wasting paper and take advantage of technology by creating a calendar application. I will
+use this application instead of what I have been doing up until now. The application will present a 
+monhtly calendar, where the user can add items to a specific day, and check them off when they have 
+been completed. 
+
+
