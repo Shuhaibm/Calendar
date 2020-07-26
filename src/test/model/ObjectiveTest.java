@@ -29,5 +29,15 @@ public class ObjectiveTest {
         // DO anObjective.markComplete(); again and return false because status is not already false
     }
 
+    @Test
+    public void testGetNote() {
+        assertEquals("Complete 210 assignment", anObjective.getNote());
+    }
+
+    @Test
+    public void testGetCompleteStatus() {
+        assertFalse(anObjective.getCompleteStatus());
+    }
+
 
 }

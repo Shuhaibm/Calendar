@@ -39,4 +39,13 @@ public class DayTest {
         //Test aDay.removeObjective(anotherObjective); and return exception no such objective
     }
 
+    @Test
+    public void testGetDate() {
+        assertEquals(aDay.getDate(), 1);
+    }
+
+    @Test
+    public void testGetListOfObjective() {
+        assertEquals(aDay.getListOfObjective(), aDay.listOfObjective);
+    }
 }

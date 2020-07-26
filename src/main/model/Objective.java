@@ -29,11 +29,12 @@ public class Objective {
         this.completeStatus = true;
     }
 
-
+    //EFFECTS: returns note
     public String getNote() {
         return this.note;
     }
 
+    //EFFECTS: returns completeStatus
     public Boolean getCompleteStatus() {
         return this.completeStatus;
     }

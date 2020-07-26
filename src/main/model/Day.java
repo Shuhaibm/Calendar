@@ -30,11 +30,12 @@ public class Day {
     }
 
 
-
+    //EFFECTS: returns date
     public int getDate() {
         return this.date;
     }
 
+    //EFFECTS: returns listOfObjective
     public ArrayList<Objective> getListOfObjective() {
         return this.listOfObjective;
     }
