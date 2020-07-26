@@ -16,16 +16,8 @@ public class DayTest {
         aDay = new Day(1);
         anObjective = new Objective("Finish homework");
         anotherObjective = new Objective("Finish workout");
-        try {
-            aDay.addObjective(anObjective);
-        } catch (TooManyObjectivesException e) {
-            e.printStackTrace();
-        }
-        try {
-            aDay.addObjective(anotherObjective);
-        } catch (TooManyObjectivesException e) {
-            e.printStackTrace();
-        }
+        aDay.addObjective(anObjective);
+        aDay.addObjective(anotherObjective);
     }
 
     @Test

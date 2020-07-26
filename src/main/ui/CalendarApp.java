@@ -60,8 +60,6 @@ public class CalendarApp {
             doRemoveObjective();
         } else if (command.equals("c")) {
             doMarkComplete();
-        } else if (command.equals("?")) {
-            doCheckComplete();
         }
 
     }
@@ -84,12 +82,7 @@ public class CalendarApp {
         System.out.println("Please enter the objective you want to add");
         String objectiveNote = input.next();
         Objective objective = new Objective(objectiveNote);
-        try {
-            calendar.calendarDays.get(dateIndex).addObjective(objective);
-        } catch (TooManyObjectivesException e) {
-            e.printStackTrace();
-            System.out.println("You have already reached the maximum objectives for this day");
-        }
+        calendar.calendarDays.get(dateIndex).addObjective(objective);
     }
 
     //MODIFIES: calendar
@@ -113,8 +106,14 @@ public class CalendarApp {
     }
 
 
-    private void doMarkComplete() {}
+    private void doMarkComplete() {
+        System.out.println("Please enter the date of the objective");
+        int dateIndex = selectDate() - 1;
+        System.out.println("Please enter the position of the objective you have completed (1, 2, 3, 4, 5)");
+        String objectivePosition = input.next();
+        int objectiveIndex = Integer.parseInt(objectivePosition) - 1;
+        calendar.calendarDays.get(dateIndex).listOfObjective.get(objectiveIndex).markComplete();
+    }
 
-    private void doCheckComplete() {}
 
 }
