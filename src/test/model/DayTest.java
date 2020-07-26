@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.TooManyObjectivesException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +16,16 @@ public class DayTest {
         aDay = new Day(1);
         anObjective = new Objective("Finish homework");
         anotherObjective = new Objective("Finish workout");
-        aDay.addObjective(anObjective);
-        aDay.addObjective(anotherObjective);
+        try {
+            aDay.addObjective(anObjective);
+        } catch (TooManyObjectivesException e) {
+            e.printStackTrace();
+        }
+        try {
+            aDay.addObjective(anotherObjective);
+        } catch (TooManyObjectivesException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
