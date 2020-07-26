@@ -1,6 +1,5 @@
 package model;
 
-import exceptions.InvalidDateException;
 
 import java.util.ArrayList;
 

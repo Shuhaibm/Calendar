@@ -1,7 +1,5 @@
 package model;
 
-import exceptions.AlreadyCompleteException;
-
 public class Objective {
     public String note;
     public Boolean completeStatus;
@@ -25,11 +23,9 @@ public class Objective {
 
     //MODIFIES: this
     //EFFECTS: sets the completeStatus for the objective to true
-    public void markComplete() throws AlreadyCompleteException {
+    public void markComplete() {
         if (this.completeStatus == false) {
             this.completeStatus = true;
-        } else {
-            throw new AlreadyCompleteException();
         }
     }
 

@@ -24,21 +24,17 @@ public class Day {
 
     //MODIFIES: this
     //EFFECTS: adds the given Objective to listOfObjective
-    public void addObjective(Objective objective) throws TooManyObjectivesException {
-        if (this.listOfObjective.size() == maxSize) {
-            throw new TooManyObjectivesException();
-        } else {
+    public void addObjective(Objective objective) {
+        if (this.listOfObjective.size() < maxSize) {
             this.listOfObjective.add(objective);
         }
     }
 
     //MODIFIES: this
     //EFFECTS: removes the given Objective from listOfObjective
-    public void removeObjective(Objective objective) throws InvalidObjectiveException {
+    public void removeObjective(Objective objective) {
         if (listOfObjective.contains(objective)) {
             this.listOfObjective.remove(objective);
-        } else {
-            throw new InvalidObjectiveException();
         }
     }
 
