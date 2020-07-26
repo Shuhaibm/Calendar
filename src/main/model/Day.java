@@ -1,32 +1,45 @@
 package model;
 
-import java.sql.ClientInfoStatus;
+import exceptions.InvalidDateException;
+import exceptions.InvalidObjectiveException;
+import exceptions.TooManyObjectivesException;
+
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Day {
     public int date;
     public ArrayList<Objective> listOfObjective;
+    public final int maxSize = 5;
 
-    //REQUIRES:date must be an int from 1 to 31
+    //May not need the exception:
+    //            if (date < 1 || date > 31) {
+    //            throw new InvalidDateException();
+
     //EFFECTS: creates new Day, set the date to the given parameter, creates an arraylist
     public Day(int date) {
         this.date = date;
         this.listOfObjective = new ArrayList<>();
     }
 
-    //REQUIRES: There must be no more than 5? objects in a day
     //MODIFIES: this
     //EFFECTS: adds the given Objective to listOfObjective
-    public void addObjective(Objective objective) {
-        this.listOfObjective.add(objective);
+    public void addObjective(Objective objective) throws TooManyObjectivesException {
+        if (this.listOfObjective.size() == maxSize) {
+            throw new TooManyObjectivesException();
+        } else {
+            this.listOfObjective.add(objective);
+        }
     }
 
-    //REQUIRES: listOfObject to be nonempty
     //MODIFIES: this
     //EFFECTS: removes the given Objective from listOfObjective
-    public void removeObjective(Objective objective) {
-        this.listOfObjective.remove(objective);
+    public void removeObjective(Objective objective) throws InvalidObjectiveException {
+        if (listOfObjective.contains(objective)) {
+            this.listOfObjective.remove(objective);
+        } else {
+            throw new InvalidObjectiveException();
+        }
     }
 
 

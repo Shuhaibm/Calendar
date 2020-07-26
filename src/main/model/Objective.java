@@ -1,11 +1,12 @@
 package model;
 
+import exceptions.AlreadyCompleteException;
+
 public class Objective {
     public String note;
     public Boolean completeStatus;
 
 
-    //REQUIRES: objectiveNote be a non empty string
     //EFFECTS: note on objective is set to objectiveNote, completeStatus is set to false
     public Objective(String objectiveNote) {
         note = objectiveNote;
@@ -22,11 +23,14 @@ public class Objective {
     //}
 
 
-    //REQUIRES: this.completeStatus to be false
     //MODIFIES: this
     //EFFECTS: sets the completeStatus for the objective to true
-    public void markComplete() {
-        this.completeStatus = true;
+    public void markComplete() throws AlreadyCompleteException {
+        if (this.completeStatus == false) {
+            this.completeStatus = true;
+        } else {
+            throw new AlreadyCompleteException();
+        }
     }
 
     //EFFECTS: returns note
