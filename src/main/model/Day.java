@@ -29,11 +29,9 @@ public class Day {
     }
 
     //MODIFIES: this
-    //EFFECTS: removes the given Objective from listOfObjective
-    public void removeObjective(Objective objective) {
-        if (listOfObjective.contains(objective)) {
-            this.listOfObjective.remove(objective);
-        }
+    //EFFECTS: removes the Objective with the given index from listOfObjective
+    public void removeObjective(int index) {
+        this.listOfObjective.remove(index);
     }
 
 

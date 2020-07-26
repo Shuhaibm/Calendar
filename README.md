@@ -22,7 +22,7 @@ been completed.
 - As a user, I want to be able to check off an objective and mark it complete
 - As a user, I want to be able to remove an objective from a day in my Calendar
 - As a user, I want to be able to view all objectives in each day in my Calendar
-- As a user, I want to be able to see whether or not an objective has been completed 
+ 
 
 
 

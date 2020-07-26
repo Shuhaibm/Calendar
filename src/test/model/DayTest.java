@@ -41,9 +41,9 @@ public class DayTest {
 
     @Test
     public void testRemoveObjective(){
-        aDay.removeObjective(anObjective);
+        aDay.removeObjective(1);
         assertEquals(aDay.listOfObjective.get(0), anotherObjective);
-        aDay.removeObjective(anotherObjective);
+        aDay.removeObjective(0);
         assertTrue(aDay.listOfObjective.isEmpty());
         //Test aDay.removeObjective(anotherObjective); and return exception no such objective
     }

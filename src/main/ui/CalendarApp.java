@@ -1,5 +1,6 @@
 package ui;
 
+import exceptions.TooManyObjectivesException;
 import model.Day;
 import model.MyCalendar;
 import model.Objective;
@@ -68,18 +69,49 @@ public class CalendarApp {
     //EFFECTS: Shows the calendar (everyday + objectives
     private void showMyCalendar() {
         for (Day day: calendar.calendarDays) {
-            System.out.println("Date: " + day.date);
+            System.out.println("Day " + day.date);
             for (Objective objective: day.listOfObjective) {
-                System.out.println("\t" + objective);
+                System.out.println("\t" + objective.note);
             }
         }
     }
 
+    //MODIFIES: calendar
+    //EFFECTS: adds specified objective to the specified date
     private void doAddObjective() {
-
+        System.out.println("Please enter a valid date for the objective");
+        int dateIndex = selectDate() - 1;
+        System.out.println("Please enter the objective you want to add");
+        String objectiveNote = input.next();
+        Objective objective = new Objective(objectiveNote);
+        try {
+            calendar.calendarDays.get(dateIndex).addObjective(objective);
+        } catch (TooManyObjectivesException e) {
+            e.printStackTrace();
+            System.out.println("You have already reached the maximum objectives for this day");
+        }
     }
 
-    private void doRemoveObjective() {}
+    //MODIFIES: calendar
+    //EFFECTS: removes specified objective from specified date
+    private void doRemoveObjective() {
+        System.out.println("Please enter the date of the objective");
+        int dateIndex = selectDate() - 1;
+        System.out.println("Please enter the position of the objective you want to remove (1, 2, 3, 4, 5)");
+        String objectivePosition = input.next();
+        int objectiveIndex = Integer.parseInt(objectivePosition) - 1;
+        calendar.calendarDays.get(dateIndex).removeObjective(objectiveIndex);
+    }
+
+    //EFFECTS: gets the user to select a date and returns it
+    private int selectDate() {
+        String selected = "0";
+        while (Integer.parseInt(selected) < 1 || Integer.parseInt(selected) > 30) {
+            selected = input.next();
+        }
+        return Integer.parseInt(selected);
+    }
+
 
     private void doMarkComplete() {}
 
