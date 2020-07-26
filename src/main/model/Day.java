@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class Day {
     public int date;
     public ArrayList<Objective> listOfObjective;
-    public final int maxSize = 5;
 
 
     //EFFECTS: creates new Day, set the date to the given parameter, creates an arraylist
@@ -20,12 +19,8 @@ public class Day {
     //Too many exception
     //MODIFIES: this
     //EFFECTS: adds the given Objective to listOfObjective
-    public void addObjective(Objective objective) throws TooManyObjectivesException {
-        if (this.listOfObjective.size() < maxSize) {
-            this.listOfObjective.add(objective);
-        } else {
-            throw new TooManyObjectivesException();
-        }
+    public void addObjective(Objective objective) {
+        this.listOfObjective.add(objective);
     }
 
     //MODIFIES: this
