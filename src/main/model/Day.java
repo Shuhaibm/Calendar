@@ -1,7 +1,5 @@
 package model;
 
-import exceptions.InvalidDateException;
-import exceptions.InvalidObjectiveException;
 import exceptions.TooManyObjectivesException;
 
 import java.util.ArrayList;
@@ -12,9 +10,6 @@ public class Day {
     public ArrayList<Objective> listOfObjective;
     public final int maxSize = 5;
 
-    //May not need the exception:
-    //            if (date < 1 || date > 31) {
-    //            throw new InvalidDateException();
 
     //EFFECTS: creates new Day, set the date to the given parameter, creates an arraylist
     public Day(int date) {
@@ -22,11 +17,14 @@ public class Day {
         this.listOfObjective = new ArrayList<>();
     }
 
+    //Too many exception
     //MODIFIES: this
     //EFFECTS: adds the given Objective to listOfObjective
-    public void addObjective(Objective objective) {
+    public void addObjective(Objective objective) throws TooManyObjectivesException {
         if (this.listOfObjective.size() < maxSize) {
             this.listOfObjective.add(objective);
+        } else {
+            throw new TooManyObjectivesException();
         }
     }
 
