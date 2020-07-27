@@ -26,7 +26,8 @@ public class ObjectiveTest {
     public void testMarkComplete() {
         anObjective.markComplete();
         assertTrue(anObjective.completeStatus);
-        // DO anObjective.markComplete(); again and return false because status is not already false
+        anObjective.markComplete();
+        assertTrue(anObjective.completeStatus);
     }
 
     @Test

@@ -24,7 +24,7 @@ public class Objective {
     //MODIFIES: this
     //EFFECTS: sets the completeStatus for the objective to true and adds COMPLETE to note
     public void markComplete() {
-        if (this.completeStatus == false) {
+        if (!this.completeStatus) {
             this.completeStatus = true;
             this.note = this.note + "COMPLETE";
         }
