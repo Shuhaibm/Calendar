@@ -1,7 +1,5 @@
 package model;
 
-import exceptions.TooManyObjectivesException;
-
 import java.util.ArrayList;
 
 

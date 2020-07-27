@@ -1,6 +1,5 @@
 package ui;
 
-import exceptions.TooManyObjectivesException;
 import model.Day;
 import model.MyCalendar;
 import model.Objective;
@@ -12,10 +11,13 @@ import java.util.*;
 public class CalendarApp {
     private Scanner input;
     private MyCalendar calendar = new MyCalendar();
+    private ArrayList dates = new ArrayList();
+
 
     //EFFECTS: run the calendar application
     public CalendarApp() {
         runCalendar();
+
     }
 
     //MODIFIES: this
@@ -77,7 +79,7 @@ public class CalendarApp {
     //MODIFIES: calendar
     //EFFECTS: adds specified objective to the specified date
     private void doAddObjective() {
-        System.out.println("Please enter a valid date for the objective");
+        //System.out.println("Please enter a valid date for the objective");
         int dateIndex = selectDate() - 1;
         System.out.println("Please enter the objective you want to add");
         String objectiveNote = input.next();
@@ -88,7 +90,7 @@ public class CalendarApp {
     //MODIFIES: calendar
     //EFFECTS: removes specified objective from specified date
     private void doRemoveObjective() {
-        System.out.println("Please enter the date of the objective");
+        //System.out.println("Please enter the date of the objective");
         int dateIndex = selectDate() - 1;
         System.out.println("Please enter the position of the objective you want to remove (1, 2, 3, 4, 5)");
         String objectivePosition = input.next();
@@ -96,24 +98,28 @@ public class CalendarApp {
         calendar.calendarDays.get(dateIndex).removeObjective(objectiveIndex);
     }
 
-    //EFFECTS: gets the user to select a date and returns it
-    private int selectDate() {
-        String selected = "0";
-        while (Integer.parseInt(selected) < 1 || Integer.parseInt(selected) > 30) {
-            selected = input.next();
-        }
-        return Integer.parseInt(selected);
-    }
-
-
     private void doMarkComplete() {
-        System.out.println("Please enter the date of the objective");
+        //System.out.println("Please enter the date of the objective");
         int dateIndex = selectDate() - 1;
         System.out.println("Please enter the position of the objective you have completed (1, 2, 3, 4, 5)");
         String objectivePosition = input.next();
         int objectiveIndex = Integer.parseInt(objectivePosition) - 1;
         calendar.calendarDays.get(dateIndex).listOfObjective.get(objectiveIndex).markComplete();
     }
+
+    //EFFECTS: gets the user to select a date and returns it
+    private int selectDate() {
+        for (int i = 1; i < 31;i++) {
+            dates.add(Integer.toString(i));
+        }
+        String selected = "0";
+        while (!(dates.contains(selected))) {
+            System.out.println("Please enter a valid date");
+            selected = input.next();
+        }
+        return Integer.parseInt(selected);
+    }
+
 
 
 }

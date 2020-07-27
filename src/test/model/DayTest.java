@@ -1,6 +1,5 @@
 package model;
 
-import exceptions.TooManyObjectivesException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
