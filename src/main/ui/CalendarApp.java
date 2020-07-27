@@ -79,7 +79,6 @@ public class CalendarApp {
     //MODIFIES: calendar
     //EFFECTS: adds specified objective to the specified date
     private void doAddObjective() {
-        //System.out.println("Please enter a valid date for the objective");
         int dateIndex = selectDate() - 1;
         System.out.println("Please enter the objective you want to add");
         String objectiveNote = input.next();
@@ -90,7 +89,6 @@ public class CalendarApp {
     //MODIFIES: calendar
     //EFFECTS: removes specified objective from specified date
     private void doRemoveObjective() {
-        //System.out.println("Please enter the date of the objective");
         int dateIndex = selectDate() - 1;
         System.out.println("Please enter the position of the objective you want to remove (1, 2, 3, 4, 5)");
         String objectivePosition = input.next();
@@ -98,8 +96,9 @@ public class CalendarApp {
         calendar.calendarDays.get(dateIndex).removeObjective(objectiveIndex);
     }
 
+    //MODIFIES: calendar
+    //EFFECTS: Marks the specified objective complete
     private void doMarkComplete() {
-        //System.out.println("Please enter the date of the objective");
         int dateIndex = selectDate() - 1;
         System.out.println("Please enter the position of the objective you have completed (1, 2, 3, 4, 5)");
         String objectivePosition = input.next();

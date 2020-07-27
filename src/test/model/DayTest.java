@@ -32,7 +32,7 @@ public class DayTest {
 
     @Test
     public void testRemoveObjective(){
-        aDay.removeObjective(1);
+        aDay.removeObjective(0);
         assertEquals(aDay.listOfObjective.get(0), anotherObjective);
         aDay.removeObjective(0);
         assertTrue(aDay.listOfObjective.isEmpty());

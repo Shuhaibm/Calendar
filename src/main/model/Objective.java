@@ -1,11 +1,12 @@
 package model;
 
+//Objectives that the user has
 public class Objective {
     public String note;
     public Boolean completeStatus;
 
 
-    //EFFECTS: note on objective is set to objectiveNote, completeStatus is set to false
+    //EFFECTS: Creates an objective, note on objective is set to objectiveNote, completeStatus is set to false
     public Objective(String objectiveNote) {
         note = objectiveNote;
         completeStatus = false;

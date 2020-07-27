@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-
+//A day in the calendar
 public class Day {
     public int date;
     public ArrayList<Objective> listOfObjective;
