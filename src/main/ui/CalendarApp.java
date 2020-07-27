@@ -14,7 +14,7 @@ public class CalendarApp {
     private ArrayList dates = new ArrayList();
 
 
-    //EFFECTS: run the calendar application
+    //EFFECTS: runs the calendar application
     public CalendarApp() {
         runCalendar();
 
