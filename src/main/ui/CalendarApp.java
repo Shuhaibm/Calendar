@@ -93,7 +93,12 @@ public class CalendarApp {
         System.out.println("Please enter the position of the objective you want to remove (1, 2, 3, 4, 5)");
         String objectivePosition = input.next();
         int objectiveIndex = Integer.parseInt(objectivePosition) - 1;
-        calendar.calendarDays.get(dateIndex).removeObjective(objectiveIndex);
+
+        if (objectiveIndex < calendar.calendarDays.get(dateIndex).listOfObjective.size()) {
+            calendar.calendarDays.get(dateIndex).removeObjective(objectiveIndex);
+        } else {
+            System.out.println("No objective to remove here");
+        }
     }
 
     //MODIFIES: calendar
@@ -103,7 +108,11 @@ public class CalendarApp {
         System.out.println("Please enter the position of the objective you have completed (1, 2, 3, 4, 5)");
         String objectivePosition = input.next();
         int objectiveIndex = Integer.parseInt(objectivePosition) - 1;
-        calendar.calendarDays.get(dateIndex).listOfObjective.get(objectiveIndex).markComplete();
+        if (objectiveIndex < calendar.calendarDays.get(dateIndex).listOfObjective.size()) {
+            calendar.calendarDays.get(dateIndex).listOfObjective.get(objectiveIndex).markComplete();
+        } else {
+            System.out.println("No objective to mark as complete here");
+        }
     }
 
     //EFFECTS: gets the user to select a date and returns it
