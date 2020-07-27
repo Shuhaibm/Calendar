@@ -10,7 +10,7 @@ public class ObjectiveTest {
     Objective anObjective;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         anObjective = new Objective("Complete 210 assignment");
     }
 

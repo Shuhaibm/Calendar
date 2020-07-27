@@ -27,7 +27,7 @@ public class Objective {
     public void markComplete() {
         if (!this.completeStatus) {
             this.completeStatus = true;
-            this.note = this.note + "COMPLETE";
+            this.note = this.note + " COMPLETE";
         }
     }
 

@@ -6,46 +6,46 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DayTest {
-    Day aDay;
+    Day myDay;
     Objective anObjective;
     Objective anotherObjective;
 
     @BeforeEach
     public void setup() {
-        aDay = new Day(1);
+        myDay = new Day(1);
         anObjective = new Objective("Finish homework");
         anotherObjective = new Objective("Finish workout");
-        aDay.addObjective(anObjective);
-        aDay.addObjective(anotherObjective);
+        myDay.addObjective(anObjective);
+        myDay.addObjective(anotherObjective);
     }
 
     @Test
     public void testDay() {
-        assertEquals(aDay.date, 1);
+        assertEquals(myDay.date, 1);
     }
 
     @Test
     public void testAddObjective() {
-        assertEquals(aDay.listOfObjective.get(0), anObjective);
-        assertEquals(aDay.listOfObjective.get(1), anotherObjective);
+        assertEquals(myDay.listOfObjective.get(0), anObjective);
+        assertEquals(myDay.listOfObjective.get(1), anotherObjective);
     }
 
     @Test
-    public void testRemoveObjective(){
-        aDay.removeObjective(0);
-        assertEquals(aDay.listOfObjective.get(0), anotherObjective);
-        aDay.removeObjective(0);
-        assertTrue(aDay.listOfObjective.isEmpty());
+    public void testRemoveObjective() {
+        myDay.removeObjective(0);
+        assertEquals(myDay.listOfObjective.get(0), anotherObjective);
+        myDay.removeObjective(0);
+        assertTrue(myDay.listOfObjective.isEmpty());
         //Test aDay.removeObjective(anotherObjective); and return exception no such objective
     }
 
     @Test
     public void testGetDate() {
-        assertEquals(aDay.getDate(), 1);
+        assertEquals(myDay.getDate(), 1);
     }
 
     @Test
     public void testGetListOfObjective() {
-        assertEquals(aDay.getListOfObjective(), aDay.listOfObjective);
+        assertEquals(myDay.getListOfObjective(), myDay.listOfObjective);
     }
 }

@@ -9,7 +9,7 @@ public class MyCalendar {
 
     //EFFECTS: creates new Month, adds 30 days to calendarDays list
     public MyCalendar() {
-        for (int i = 1; i < 31;i++) {
+        for (int i = 1; i < 31; i++) {
             calendarDays.add(new Day(i));
         }
     }

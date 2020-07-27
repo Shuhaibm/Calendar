@@ -4,6 +4,7 @@ import model.Day;
 import model.MyCalendar;
 import model.Objective;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 
@@ -46,7 +47,6 @@ public class CalendarApp {
         System.out.println("\ta -> Add an objective");
         System.out.println("\tr -> Remove an objective");
         System.out.println("\tc -> Mark an objective as complete");
-        System.out.println("\t? -> Check complete status");
         System.out.println("\tq -> quit");
 
     }
@@ -68,9 +68,9 @@ public class CalendarApp {
 
     //EFFECTS: Shows the calendar (everyday + objectives
     private void showMyCalendar() {
-        for (Day day: calendar.calendarDays) {
+        for (Day day : calendar.calendarDays) {
             System.out.println("Day " + day.date);
-            for (Objective objective: day.listOfObjective) {
+            for (Objective objective : day.listOfObjective) {
                 System.out.println("\t" + objective.note);
             }
         }
@@ -108,7 +108,7 @@ public class CalendarApp {
 
     //EFFECTS: gets the user to select a date and returns it
     private int selectDate() {
-        for (int i = 1; i < 31;i++) {
+        for (int i = 1; i < 31; i++) {
             dates.add(Integer.toString(i));
         }
         String selected = "0";
@@ -118,7 +118,6 @@ public class CalendarApp {
         }
         return Integer.parseInt(selected);
     }
-
 
 
 }
