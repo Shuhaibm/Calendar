@@ -12,6 +12,13 @@ public class Objective {
         completeStatus = false;
     }
 
+    //EFFECTS: Creates an objective, note on objective is set to objectiveNote, completeStatus is set to false
+    public Objective(String objectiveNote, Boolean completeStatus) {
+        note = objectiveNote;
+        this.completeStatus = completeStatus;
+    }
+
+
 
     //May not need this method!!!
     //REQUIRES: this.note to have no value

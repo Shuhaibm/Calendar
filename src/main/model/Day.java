@@ -14,6 +14,12 @@ public class Day {
         this.listOfObjective = new ArrayList<>();
     }
 
+    //EFFECTS: creates new Day, set the date to the given parameter, creates an arraylist according to given
+    public Day(ArrayList<Objective> objectives, int date) {
+        this.date = date;
+        this.listOfObjective = objectives;
+    }
+
     //Too many exception
     //MODIFIES: this
     //EFFECTS: adds the given Objective to listOfObjective

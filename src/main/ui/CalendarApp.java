@@ -14,6 +14,8 @@ public class CalendarApp {
     private MyCalendar calendar = new MyCalendar();
     private ArrayList dates = new ArrayList();
 
+    private static String ACCOUNTS_FILE = "./data/accounts.txt";
+
 
     //EFFECTS: runs the calendar application
     public CalendarApp() {
@@ -27,6 +29,7 @@ public class CalendarApp {
         boolean runApp = true;
         input = new Scanner(System.in);
         String command;
+
 
         while (runApp) {
             displayMenu();
