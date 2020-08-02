@@ -24,7 +24,7 @@ been completed.
 - As a user, I want to be able to view all objectives in each day in my Calendar
 
 - As a user, I want to be able to the option to save my Calendar file when I quit
-- As a user, I want to have the option of loading a saved Calendar when the program starts
+- As a user, I want to have the option of loading the previously saved Calendar when the program starts
  
 
 
