@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class WriterTest {
 
-    private static final String TEST_FILE = "./data/testAccounts.txt";
+    private static final String TEST_FILE = "./data/testCalendarFile1.txt";
     private Writer testWriter;
     private MyCalendar calendar;
 

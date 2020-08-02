@@ -3,8 +3,13 @@ package ui;
 import model.Day;
 import model.MyCalendar;
 import model.Objective;
+import persistence.Reader;
+import persistence.Writer;
 
-import java.lang.reflect.Array;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 
@@ -14,7 +19,7 @@ public class CalendarApp {
     private MyCalendar calendar = new MyCalendar();
     private ArrayList dates = new ArrayList();
 
-    private static String ACCOUNTS_FILE = "./data/accounts.txt";
+    private static String CALENDARS_FILE = "./data/calendars.txt";
 
 
     //EFFECTS: runs the calendar application
@@ -50,6 +55,8 @@ public class CalendarApp {
         System.out.println("\ta -> Add an objective");
         System.out.println("\tr -> Remove an objective");
         System.out.println("\tc -> Mark an objective as complete");
+        System.out.println("\tl -> load previously saved calendar");
+        System.out.println("\ts -> save current calendar");
         System.out.println("\tq -> quit");
 
     }
@@ -65,9 +72,40 @@ public class CalendarApp {
             doRemoveObjective();
         } else if (command.equals("c")) {
             doMarkComplete();
+        } else if (command.equals("l")) {
+            doLoadCalendar();
+        } else if (command.equals("s")) {
+            doSaveCalendar();
         }
 
     }
+
+    private void doLoadCalendar() {
+        try {
+            List<MyCalendar> calendars = Reader.readCalendars(new File(CALENDARS_FILE));
+            System.out.println("Please enter the position of the Calendar file you want to load (1, 2, 3...)");
+            int position = Integer.parseInt(input.next());
+            calendar = calendars.get(position - 1);
+        } catch (IOException e) {
+            System.out.println("File does not exist");
+        }
+    }
+
+    // EFFECTS: saves the current calendar to Calendar_File
+    private void doSaveCalendar() {
+        try {
+            Writer writer = new Writer(new File(CALENDARS_FILE));
+            writer.write(calendar);
+            writer.close();
+            System.out.println("Accounts saved to file " + CALENDARS_FILE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to save accounts to " + CALENDARS_FILE);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            // this is due to a programming error
+        }
+    }
+
 
     //EFFECTS: Shows the calendar (everyday + objectives
     private void showMyCalendar() {
@@ -93,7 +131,7 @@ public class CalendarApp {
     //EFFECTS: removes specified objective from specified date
     private void doRemoveObjective() {
         int dateIndex = selectDate() - 1;
-        System.out.println("Please enter the position of the objective you want to remove (1, 2, 3, 4, 5)");
+        System.out.println("Please enter the position of the objective you want to remove (1, 2, 3...)");
         String objectivePosition = input.next();
         int objectiveIndex = Integer.parseInt(objectivePosition) - 1;
 
