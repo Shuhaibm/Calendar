@@ -83,10 +83,10 @@ public class CalendarApp {
     private void doLoadCalendar() {
         try {
             List<MyCalendar> calendars = Reader.readCalendars(new File(CALENDARS_FILE));
-            System.out.println("Please enter the position of the Calendar file you want to load (1, 2, 3...)");
-            int position = Integer.parseInt(input.next());
-            calendar = calendars.get(position - 1);
+            calendar = calendars.get(0);
         } catch (IOException e) {
+            System.out.println("File does not exist");
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("File does not exist");
         }
     }
