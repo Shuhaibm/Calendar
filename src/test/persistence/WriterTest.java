@@ -1,6 +1,7 @@
 package persistence;
 
 import model.MyCalendar;
+import model.Objective;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,8 +23,10 @@ public class WriterTest {
 
     @BeforeEach
     void runBefore() throws FileNotFoundException, UnsupportedEncodingException {
-        testWriter = new Writer(new File(TEST_FILE));
         calendar = new MyCalendar();
+        calendar.calendarDays.get(0).addObjective(new Objective("asdf"));
+        testWriter = new Writer(new File(TEST_FILE));
+
     }
 
     @Test
@@ -38,7 +41,9 @@ public class WriterTest {
             List<MyCalendar> calendars = Reader.readCalendars(new File(TEST_FILE));
             MyCalendar calendar = calendars.get(0);
             assertEquals(30, calendar.calendarDays.size());
-            assertEquals(0, calendar.calendarDays.get(0).listOfObjective.size());
+            assertEquals(0, calendar.calendarDays.get(1).listOfObjective.size());
+            assertEquals("asdf", calendar.calendarDays.get(0).listOfObjective.get(0).note);
+            assertEquals(false, calendar.calendarDays.get(0).listOfObjective.get(0).completeStatus);
 
 
         } catch (IOException e) {

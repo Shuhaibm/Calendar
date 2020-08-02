@@ -1,6 +1,7 @@
 package persistence;
 
 import model.MyCalendar;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -11,6 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class ReaderTest {
+
+    @BeforeEach
+    void setup() {
+        Reader readerTest = new Reader();
+    }
 
     @Test
     void testMakeCalendarsSampleFile() {

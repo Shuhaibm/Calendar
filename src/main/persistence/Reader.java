@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//Read data from a file
 public class Reader {
     public static final String DELIMITER = ",";
     public static final String DAYDELIMITER = "/";
