@@ -27,7 +27,7 @@ public class ReaderTest {
             assertEquals("asdf", calendar1.calendarDays.get(0).listOfObjective.get(0).note);
             assertEquals(false, calendar1.calendarDays.get(0).listOfObjective.get(0).completeStatus);
             assertTrue(calendar1.calendarDays.get(1).listOfObjective.isEmpty());
-            /* 
+            /*
             MyCalendar calendar2 = calendars.get(1);
             assertEquals(30, calendar2.calendarDays.size());
             assertEquals("fdsa", calendar2.calendarDays.get(1).listOfObjective.get(0).note);
