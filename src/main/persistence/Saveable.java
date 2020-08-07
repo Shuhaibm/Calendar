@@ -8,4 +8,3 @@ public interface Saveable {
     // EFFECTS: writes the saveable to printWriter
     void save(PrintWriter printWriter);
 }
-

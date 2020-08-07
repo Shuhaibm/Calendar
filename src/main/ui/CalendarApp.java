@@ -80,6 +80,8 @@ public class CalendarApp {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: loads previously saved calendar
     private void doLoadCalendar() {
         try {
             List<MyCalendar> calendars = Reader.readCalendars(new File(CALENDARS_FILE));

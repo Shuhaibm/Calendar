@@ -59,7 +59,7 @@ public class Reader {
         return new ArrayList<>(Arrays.asList(splits));
     }
 
-
+    // Effects: returns a list of objectives
     private static ArrayList<Objective> makeObjectives(ArrayList<String> componentList) {
         ArrayList<Objective> objectives = new ArrayList<>();
         while (!componentList.isEmpty()) {
