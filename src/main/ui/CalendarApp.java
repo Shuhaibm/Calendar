@@ -92,9 +92,7 @@ public class CalendarApp {
         try {
             List<MyCalendar> calendars = Reader.readCalendars(new File(CALENDARS_FILE));
             calendar = calendars.get(0);
-        } catch (IOException e) {
-            System.out.println("File does not exist");
-        } catch (IndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException | IOException e) {
             System.out.println("File does not exist");
         }
     }
