@@ -6,8 +6,7 @@ import model.Objective;
 import persistence.Reader;
 import persistence.Writer;
 
-import javax.swing.*;
-import java.awt.*;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -24,9 +23,6 @@ public class CalendarApp {
     CalendarWindow calendarWindow;
 
     private static String CALENDARS_FILE = "./data/calendars.txt";
-
-    public static final int WIDTH = 1000;
-    public static final int HEIGHT = 700;
 
 
     //EFFECTS: runs the calendar application
