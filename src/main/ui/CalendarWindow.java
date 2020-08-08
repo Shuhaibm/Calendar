@@ -29,8 +29,8 @@ public class CalendarWindow extends JFrame implements ActionListener {
     // MODIFIES:
     // EFFECTS:
     public void initializeStarter() {
-
-        viewButton = new JButton("View calendar");
+        clearScreen();
+        viewButton = new JButton("View Calendar");
         viewButton.addActionListener(this);
         addButton = new JButton("Add an objective");
         addButton.addActionListener(this);
@@ -54,14 +54,48 @@ public class CalendarWindow extends JFrame implements ActionListener {
         for (int i = 0; i < 30; i++) {
             choices[i] = i + 1;
         }
-        choiceBox = new JComboBox<Integer>(choices);
+        choiceBox = new JComboBox<>(choices);
 
-        addButton = new JButton("add");
+        JLabel text1 = new JLabel("Date:", SwingConstants.LEFT);
+        JLabel text2 = new JLabel("Objective:", SwingConstants.LEFT);
+
+
+        addButton = new JButton("Add");
         addButton.addActionListener(this);
 
         panel.add(title);
         panel.add(textField);
+        panel.add(text1);
         panel.add(choiceBox);
+        panel.add(text2);
+        panel.add(addButton);
+
+        setUpScreen();
+    }
+
+    public void initializeRemover() {
+        clearScreen();
+
+        JLabel title = new JLabel("Remove an Objective", SwingConstants.CENTER);
+
+        JLabel text1 = new JLabel("Position of objective:", SwingConstants.LEFT);
+        JLabel text2 = new JLabel("Date:", SwingConstants.LEFT);
+        textField = new JTextField(10);
+
+        Integer[] choices = new Integer[30];
+        for (int i = 0; i < 30; i++) {
+            choices[i] = i + 1;
+        }
+        choiceBox = new JComboBox<>(choices);
+
+        addButton = new JButton("Remove");
+        addButton.addActionListener(this);
+
+        panel.add(title);
+        panel.add(text2);
+        panel.add(choiceBox);
+        panel.add(text1);
+        panel.add(textField);
         panel.add(addButton);
 
         setUpScreen();
@@ -72,7 +106,7 @@ public class CalendarWindow extends JFrame implements ActionListener {
     private void initializeShower() {
         clearScreen();
 
-        JLabel title = new JLabel("Select date:", SwingConstants.CENTER);
+        JLabel title = new JLabel("Select date:", SwingConstants.LEFT);
 
         addButton = new JButton("Show");
         addButton.addActionListener(this);
@@ -81,7 +115,7 @@ public class CalendarWindow extends JFrame implements ActionListener {
         for (int i = 0; i < 30; i++) {
             choices[i] = i + 1;
         }
-        choiceBox = new JComboBox<Integer>(choices);
+        choiceBox = new JComboBox<>(choices);
 
         panel.add(title);
         panel.add(choiceBox);
@@ -92,17 +126,26 @@ public class CalendarWindow extends JFrame implements ActionListener {
 
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("View calendar")) {
+        if (e.getActionCommand().equals("View Calendar")) {
             initializeShower();
         }
         if (e.getActionCommand().equals("Show")) {
             printDay();
-        } else if (e.getActionCommand().equals("Add an objective")) {
+        }
+        if (e.getActionCommand().equals("Back")) {
+            initializeStarter();
+        }
+        if (e.getActionCommand().equals("Add an objective")) {
             initializeAdder();
-        } else if (e.getActionCommand().equals("add")) {
+        }
+        if (e.getActionCommand().equals("Add")) {
             doAddObjective();
-        } else if (e.getActionCommand().equals("Remove an objective")) {
-            System.out.println("a");
+        }
+        if (e.getActionCommand().equals("Remove an objective")) {
+            initializeRemover();
+        }
+        if (e.getActionCommand().equals("Remove")) {
+            doRemoveObjective();
         }
     }
 
@@ -113,11 +156,10 @@ public class CalendarWindow extends JFrame implements ActionListener {
         backButton.addActionListener(this);
 
         int date = choiceBox.getSelectedIndex() + 1;
-        JLabel dayTitle = new JLabel("Day " + date);
+        JLabel dayTitle = new JLabel("Day " + date, SwingConstants.LEFT);
 
 
         panel.add(dayTitle);
-        panel.add(choiceBox);
 
         ArrayList<Objective> objectives = CalendarApp.calendar.calendarDays.get(date - 1).listOfObjective;
         for (Objective objective : objectives) {
@@ -141,6 +183,21 @@ public class CalendarWindow extends JFrame implements ActionListener {
         if (!objectiveNote.equals("")) {
             Objective objective = new Objective(objectiveNote);
             CalendarApp.calendar.calendarDays.get(dateIndex).addObjective(objective);
+        }
+
+        clearScreen();
+        initializeStarter();
+    }
+
+
+    //MODIFIES: calendar
+    //EFFECTS: removes specified objective from the specified date
+    private void doRemoveObjective() {
+        int dateIndex = choiceBox.getSelectedIndex();
+        int positionIndex = Integer.parseInt(textField.getText()) - 1;
+
+        if (positionIndex < CalendarApp.calendar.calendarDays.get(dateIndex).listOfObjective.size()) {
+            CalendarApp.calendar.calendarDays.get(dateIndex).removeObjective(positionIndex);
         }
 
         clearScreen();

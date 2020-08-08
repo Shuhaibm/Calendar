@@ -132,7 +132,7 @@ public class CalendarApp {
 
     //MODIFIES: calendar
     //EFFECTS: adds specified objective to the specified date
-    private void doAddObjective() {
+    public void doAddObjective() {
         int dateIndex = selectDate() - 1;
         System.out.println("Please enter the objective you want to add");
         String objectiveNote = input.next();
