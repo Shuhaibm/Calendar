@@ -7,11 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 
 public class CalendarWindow implements ActionListener {
     JTextField textField;
-    final JComboBox<Integer> choiceBox;
+    JComboBox<Integer> choiceBox;
     JButton addButton;
     JButton removeButton;
 
@@ -25,10 +26,12 @@ public class CalendarWindow implements ActionListener {
         addButton.addActionListener(this);
         removeButton.addActionListener(this);
 
-        Integer[] choices;
-        choices = new Integer[]{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30};
+        ArrayList<Integer> choices = new ArrayList<Integer>();
+        for (Integer i = 1; i < 31; i++) {
+            choices.add(i);
+        }
 
-        choiceBox = new JComboBox<>(choices);
+        choiceBox = new JComboBox<Integer>((ComboBoxModel<Integer>) choices);
 
 
         JPanel panel = new JPanel();
