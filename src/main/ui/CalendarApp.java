@@ -6,27 +6,34 @@ import model.Objective;
 import persistence.Reader;
 import persistence.Writer;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
+import java.util.List;
 
 
 // Calendar Application
 public class CalendarApp {
     private Scanner input;
-    private MyCalendar calendar = new MyCalendar();
+    public static MyCalendar calendar = new MyCalendar();
     private ArrayList dates = new ArrayList();
+    CalendarWindow calendarWindow;
 
     private static String CALENDARS_FILE = "./data/calendars.txt";
+
+    public static final int WIDTH = 1000;
+    public static final int HEIGHT = 700;
 
 
     //EFFECTS: runs the calendar application
     public CalendarApp() {
         runCalendar();
-
     }
+
 
     //MODIFIES: this
     //EFFECTS: processes the user input
@@ -35,6 +42,7 @@ public class CalendarApp {
         input = new Scanner(System.in);
         String command;
 
+        calendarWindow = new CalendarWindow();
 
         while (runApp) {
             displayMenu();
@@ -42,6 +50,8 @@ public class CalendarApp {
 
             if (command.equals("q")) {
                 runApp = false;
+            } else if (calendarWindow.addButton.getModel().isPressed()) {
+                doAddObjective();
             } else {
                 processCommand(command);
             }
@@ -122,9 +132,11 @@ public class CalendarApp {
     //MODIFIES: calendar
     //EFFECTS: adds specified objective to the specified date
     private void doAddObjective() {
-        int dateIndex = selectDate() - 1;
-        System.out.println("Please enter the objective you want to add");
-        String objectiveNote = input.next();
+        //int dateIndex = selectDate() - 1;
+        //System.out.println("Please enter the objective you want to add");
+        //String objectiveNote = input.next();
+        int dateIndex = calendarWindow.choiceBox.getSelectedIndex();
+        String objectiveNote = calendarWindow.textField.getText();
         Objective objective = new Objective(objectiveNote);
         calendar.calendarDays.get(dateIndex).addObjective(objective);
     }
