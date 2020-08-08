@@ -28,12 +28,16 @@ been completed.
  
 - You can generate the first required event by clicking the "Add an Objective" button, entering an 
   objective in the text box, selecting the date you want to add to from the drop down menu, 
-  and clicking add. This will add an objective to the specified date.
+  and clicking the "Add" button. This will add an objective to the specified date.
 - You can generate the second required event by clicking the "Remove an Objective" button, selecting
   the date you want to edit from the drop down menu, entering the position of the objective in the 
-  text box and clicking remove. This will remove the specified objective from the specified date.
+  text box and clicking the "Remove" button. This will remove the specified objective from the specified
+  date.
 - You can generate another second required event by clicking the "View Calendar" button, selecting
-  the date you want to view from the drop down menu, and clicking show. This will show all the 
-  objectives of the specified date.
+  the date you want to view from the drop down menu, and clicking the "Show" button. This will show all 
+  the objectives of the specified date.
+- You can trigger my audio component by clicking the "Add an Objective" button, then clicking the 
+  "Add" button for the first sound, and clicking the "Remove an Objective" button, then clicking the
+  "Remove" button for the second sound.
 
 

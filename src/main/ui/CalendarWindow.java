@@ -2,11 +2,15 @@ package ui;
 
 import model.Objective;
 
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import java.io.File;
 
 
 public class CalendarWindow extends JFrame implements ActionListener {
@@ -185,23 +189,62 @@ public class CalendarWindow extends JFrame implements ActionListener {
             CalendarApp.calendar.calendarDays.get(dateIndex).addObjective(objective);
         }
 
+        playSound("./data/bloop_x.wav");
+
         clearScreen();
         initializeStarter();
     }
 
 
+    public void playSound(String addSound) {
+
+        // source for sound files: https://www.wavsource.com/sfx/sfx.htm
+
+        AudioInputStream audioInputStream = null;
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File(addSound).getAbsoluteFile());
+        } catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Clip clip = null;
+        try {
+            clip = AudioSystem.getClip();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        }
+        try {
+            clip.open(audioInputStream);
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        clip.start();
+    }
+
     //MODIFIES: calendar
     //EFFECTS: removes specified objective from the specified date
     private void doRemoveObjective() {
         int dateIndex = choiceBox.getSelectedIndex();
-        int positionIndex = Integer.parseInt(textField.getText()) - 1;
 
-        if (positionIndex < CalendarApp.calendar.calendarDays.get(dateIndex).listOfObjective.size()) {
-            CalendarApp.calendar.calendarDays.get(dateIndex).removeObjective(positionIndex);
+        try {
+            int positionIndex = Integer.parseInt(textField.getText()) - 1;
+
+            if (positionIndex < CalendarApp.calendar.calendarDays.get(dateIndex).listOfObjective.size()) {
+                CalendarApp.calendar.calendarDays.get(dateIndex).removeObjective(positionIndex);
+            }
+
+        } catch (NumberFormatException e) {
+            //do nothing
+        } finally {
+            playSound("./data/blip.wav");
+            clearScreen();
+            initializeStarter();
         }
 
-        clearScreen();
-        initializeStarter();
+
     }
 
 
