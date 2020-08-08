@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
-public class CalendarWindow implements ActionListener {
+public class CalendarWindow {
     JTextField textField;
     JComboBox<Integer> choiceBox;
     JButton addButton;
@@ -23,15 +23,11 @@ public class CalendarWindow implements ActionListener {
         addButton = new JButton("Add an objective");
         removeButton = new JButton("Remove an objective");
 
-        addButton.addActionListener(this);
-        removeButton.addActionListener(this);
-
-        ArrayList<Integer> choices = new ArrayList<Integer>();
-        for (Integer i = 1; i < 31; i++) {
+        ArrayList<Integer> choices = new ArrayList<>();
+        for (int i = 1; i < 31; i++) {
             choices.add(i);
         }
-
-        choiceBox = new JComboBox<Integer>((ComboBoxModel<Integer>) choices);
+        choiceBox = new JComboBox<>((ComboBoxModel<Integer>) choices);
 
 
         JPanel panel = new JPanel();
@@ -52,16 +48,4 @@ public class CalendarWindow implements ActionListener {
 
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        doAddObjective();
-    }
-
-    private void doAddObjective() {
-        int dateIndex = choiceBox.getSelectedIndex();
-        String objectiveNote = textField.getText();
-        Objective objective = new Objective(objectiveNote);
-        CalendarApp.calendar.calendarDays.get(dateIndex).addObjective(objective);
-    }
 }
