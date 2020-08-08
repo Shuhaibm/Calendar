@@ -20,9 +20,10 @@ public class CalendarApp {
     private Scanner input;
     public static MyCalendar calendar = new MyCalendar();
     private ArrayList dates = new ArrayList();
-    CalendarWindow calendarWindow;
 
     private static String CALENDARS_FILE = "./data/calendars.txt";
+
+    CalendarWindow calendarWindow;
 
 
     //EFFECTS: runs the calendar application
@@ -46,8 +47,6 @@ public class CalendarApp {
 
             if (command.equals("q")) {
                 runApp = false;
-            } else if (calendarWindow.addButton.getModel().isPressed()) {
-                doAddObjective();
             } else {
                 processCommand(command);
             }
@@ -86,6 +85,8 @@ public class CalendarApp {
 
     }
 
+
+
     //MODIFIES: this
     //EFFECTS: loads previously saved calendar
     private void doLoadCalendar() {
@@ -96,6 +97,8 @@ public class CalendarApp {
             System.out.println("File does not exist");
         }
     }
+
+
 
     // EFFECTS: saves the current calendar to Calendar_File
     private void doSaveCalendar() {
@@ -113,6 +116,8 @@ public class CalendarApp {
     }
 
 
+
+
     //EFFECTS: Shows the calendar (everyday + objectives
     private void showMyCalendar() {
         for (Day day : calendar.calendarDays) {
@@ -123,17 +128,19 @@ public class CalendarApp {
         }
     }
 
+
+
     //MODIFIES: calendar
     //EFFECTS: adds specified objective to the specified date
     private void doAddObjective() {
-        //int dateIndex = selectDate() - 1;
-        //System.out.println("Please enter the objective you want to add");
-        //String objectiveNote = input.next();
-        int dateIndex = calendarWindow.choiceBox.getSelectedIndex();
-        String objectiveNote = calendarWindow.textField.getText();
+        int dateIndex = selectDate() - 1;
+        System.out.println("Please enter the objective you want to add");
+        String objectiveNote = input.next();
         Objective objective = new Objective(objectiveNote);
         calendar.calendarDays.get(dateIndex).addObjective(objective);
     }
+
+
 
     //MODIFIES: calendar
     //EFFECTS: removes specified objective from specified date
@@ -150,6 +157,8 @@ public class CalendarApp {
         }
     }
 
+
+
     //MODIFIES: calendar
     //EFFECTS: Marks the specified objective complete
     private void doMarkComplete() {
@@ -163,6 +172,8 @@ public class CalendarApp {
             System.out.println("No objective to mark as complete here");
         }
     }
+
+
 
     //EFFECTS: gets the user to select a date and returns it
     private int selectDate() {
