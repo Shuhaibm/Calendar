@@ -209,11 +209,7 @@ public class CalendarWindow extends JFrame implements ActionListener {
 
         ArrayList<Objective> objectives = CalendarApp.calendar.calendarDays.get(date - 1).listOfObjective;
         for (Objective objective : objectives) {
-            if (objective.completeStatus) {
-                panel.add(new JLabel("       • " + objective.note ));
-            } else {
-                panel.add(new JLabel("       • " + objective.note));
-            }
+            panel.add(new JLabel("       • " + objective.note));
         }
 
         panel.add(backButton);
