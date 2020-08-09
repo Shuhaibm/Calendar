@@ -39,5 +39,7 @@ been completed.
 - You can trigger my audio component by clicking the "Add an Objective" button, then clicking the 
   "Add" button for the first sound, and clicking the "Remove an Objective" button, then clicking the
   "Remove" button for the second sound.
+- You can save the state of my application by clicking the "Save Calendar" button
+  You can reload the state of my application by clicking the "Load Calendar" button
 
 

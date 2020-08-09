@@ -89,7 +89,7 @@ public class CalendarApp {
 
     //MODIFIES: this
     //EFFECTS: loads previously saved calendar
-    private void doLoadCalendar() {
+    public static void doLoadCalendar() {
         try {
             List<MyCalendar> calendars = Reader.readCalendars(new File(CALENDARS_FILE));
             calendar = calendars.get(0);
@@ -101,7 +101,7 @@ public class CalendarApp {
 
 
     // EFFECTS: saves the current calendar to Calendar_File
-    private void doSaveCalendar() {
+    public static void doSaveCalendar() {
         try {
             Writer writer = new Writer(new File(CALENDARS_FILE));
             writer.write(calendar);

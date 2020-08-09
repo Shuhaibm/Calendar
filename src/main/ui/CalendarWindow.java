@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import java.io.File;
+import java.util.Calendar;
 
 
 public class CalendarWindow extends JFrame implements ActionListener {
@@ -40,10 +41,16 @@ public class CalendarWindow extends JFrame implements ActionListener {
         addButton.addActionListener(this);
         removeButton = new JButton("Remove an objective");
         removeButton.addActionListener(this);
+        JButton saveButton = new JButton("Save Calendar");
+        saveButton.addActionListener(this);
+        JButton loadButton = new JButton("Load Calendar");
+        loadButton.addActionListener(this);
 
         panel.add(viewButton);
         panel.add(addButton);
         panel.add(removeButton);
+        panel.add(saveButton);
+        panel.add(loadButton);
 
         setUpScreen();
     }
@@ -132,24 +139,22 @@ public class CalendarWindow extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("View Calendar")) {
             initializeShower();
-        }
-        if (e.getActionCommand().equals("Show")) {
+        } else if (e.getActionCommand().equals("Show")) {
             printDay();
-        }
-        if (e.getActionCommand().equals("Back")) {
+        } else if (e.getActionCommand().equals("Back")) {
             initializeStarter();
-        }
-        if (e.getActionCommand().equals("Add an objective")) {
+        } else if (e.getActionCommand().equals("Add an objective")) {
             initializeAdder();
-        }
-        if (e.getActionCommand().equals("Add")) {
+        } else if (e.getActionCommand().equals("Add")) {
             doAddObjective();
-        }
-        if (e.getActionCommand().equals("Remove an objective")) {
+        } else if (e.getActionCommand().equals("Remove an objective")) {
             initializeRemover();
-        }
-        if (e.getActionCommand().equals("Remove")) {
+        } else if (e.getActionCommand().equals("Remove")) {
             doRemoveObjective();
+        } else if (e.getActionCommand().equals("Save Calendar")) {
+            CalendarApp.doSaveCalendar();
+        } else if (e.getActionCommand().equals("Load Calendar")) {
+            CalendarApp.doLoadCalendar();
         }
     }
 
@@ -203,9 +208,7 @@ public class CalendarWindow extends JFrame implements ActionListener {
         AudioInputStream audioInputStream = null;
         try {
             audioInputStream = AudioSystem.getAudioInputStream(new File(addSound).getAbsoluteFile());
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (UnsupportedAudioFileException | IOException e) {
             e.printStackTrace();
         }
         Clip clip = null;
@@ -216,9 +219,7 @@ public class CalendarWindow extends JFrame implements ActionListener {
         }
         try {
             clip.open(audioInputStream);
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (IOException | LineUnavailableException | NullPointerException e) {
             e.printStackTrace();
         }
         clip.start();
