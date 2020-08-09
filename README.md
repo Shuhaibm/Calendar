@@ -26,6 +26,9 @@ been completed.
 - As a user, I want to be able to the option to save my Calendar file when I quit
 - As a user, I want to have the option of loading the previously saved Calendar when the program starts
  
+ 
+ ## Instructins for Grader
+
 - You can generate the first required event by clicking the "Add an Objective" button, entering an 
   objective in the text box, selecting the date you want to add to from the drop down menu, 
   and clicking the "Add" button. This will add an objective to the specified date.

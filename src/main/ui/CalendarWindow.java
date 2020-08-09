@@ -302,7 +302,6 @@ public class CalendarWindow extends JFrame implements ActionListener {
         } catch (NumberFormatException e) {
             //do nothing
         } finally {
-            playSound("./data/blip.wav");
             clearScreen();
             initializeStarter();
         }
