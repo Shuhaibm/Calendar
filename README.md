@@ -36,10 +36,13 @@ been completed.
 - You can generate another second required event by clicking the "View Calendar" button, selecting
   the date you want to view from the drop down menu, and clicking the "Show" button. This will show all 
   the objectives of the specified date.
+- You can generate another second required event by clicking the "Mark as complete" button, selecting
+  the date and position of the objective you want to mark as complete, and this will mark that objective 
+  as completed.
 - You can trigger my audio component by clicking the "Add an Objective" button, then clicking the 
   "Add" button for the first sound, and clicking the "Remove an Objective" button, then clicking the
   "Remove" button for the second sound.
-- You can save the state of my application by clicking the "Save Calendar" button
-  You can reload the state of my application by clicking the "Load Calendar" button
+- You can save the state of my application by clicking the "Save Calendar" button.
+- You can reload the state of my application by clicking the "Load Calendar" button.
 
 

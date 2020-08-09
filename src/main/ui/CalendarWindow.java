@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import java.io.File;
-import java.util.Calendar;
 
 
 public class CalendarWindow extends JFrame implements ActionListener {
@@ -41,14 +40,18 @@ public class CalendarWindow extends JFrame implements ActionListener {
         addButton.addActionListener(this);
         removeButton = new JButton("Remove an objective");
         removeButton.addActionListener(this);
+        JButton completeButton = new JButton("Mark as complete");
+        completeButton.addActionListener(this);
         JButton saveButton = new JButton("Save Calendar");
         saveButton.addActionListener(this);
         JButton loadButton = new JButton("Load Calendar");
         loadButton.addActionListener(this);
 
+
         panel.add(viewButton);
         panel.add(addButton);
         panel.add(removeButton);
+        panel.add(completeButton);
         panel.add(saveButton);
         panel.add(loadButton);
 
@@ -84,7 +87,7 @@ public class CalendarWindow extends JFrame implements ActionListener {
         setUpScreen();
     }
 
-    public void initializeRemover() {
+    private void initializeRemover() {
         clearScreen();
 
         JLabel title = new JLabel("Remove an Objective", SwingConstants.CENTER);
@@ -100,6 +103,34 @@ public class CalendarWindow extends JFrame implements ActionListener {
         choiceBox = new JComboBox<>(choices);
 
         addButton = new JButton("Remove");
+        addButton.addActionListener(this);
+
+        panel.add(title);
+        panel.add(text2);
+        panel.add(choiceBox);
+        panel.add(text1);
+        panel.add(textField);
+        panel.add(addButton);
+
+        setUpScreen();
+    }
+
+    private void initializeCompleter() {
+        clearScreen();
+
+        JLabel title = new JLabel("Complete an Objective", SwingConstants.CENTER);
+
+        JLabel text1 = new JLabel("Position of objective:", SwingConstants.LEFT);
+        JLabel text2 = new JLabel("Date:", SwingConstants.LEFT);
+        textField = new JTextField(10);
+
+        Integer[] choices = new Integer[30];
+        for (int i = 0; i < 30; i++) {
+            choices[i] = i + 1;
+        }
+        choiceBox = new JComboBox<>(choices);
+
+        addButton = new JButton("Complete");
         addButton.addActionListener(this);
 
         panel.add(title);
@@ -155,8 +186,14 @@ public class CalendarWindow extends JFrame implements ActionListener {
             CalendarApp.doSaveCalendar();
         } else if (e.getActionCommand().equals("Load Calendar")) {
             CalendarApp.doLoadCalendar();
+        } else if (e.getActionCommand().equals("Mark as complete")) {
+            initializeCompleter();
+        } else if (e.getActionCommand().equals("Complete")) {
+            doMarkComplete();
         }
     }
+
+
 
     private void printDay() {
         clearScreen();
@@ -172,11 +209,14 @@ public class CalendarWindow extends JFrame implements ActionListener {
 
         ArrayList<Objective> objectives = CalendarApp.calendar.calendarDays.get(date - 1).listOfObjective;
         for (Objective objective : objectives) {
-            panel.add(new JLabel("       • " + objective.note));
+            if (objective.completeStatus) {
+                panel.add(new JLabel("       • " + objective.note ));
+            } else {
+                panel.add(new JLabel("       • " + objective.note));
+            }
         }
 
         panel.add(backButton);
-
 
         setUpScreen();
     }
@@ -244,10 +284,29 @@ public class CalendarWindow extends JFrame implements ActionListener {
             clearScreen();
             initializeStarter();
         }
-
-
     }
 
+    //MODIFIES: calendar
+    //EFFECTS: removes specified objective from the specified date
+    private void doMarkComplete() {
+        int dateIndex = choiceBox.getSelectedIndex();
+
+        try {
+            int positionIndex = Integer.parseInt(textField.getText()) - 1;
+
+            if (positionIndex < CalendarApp.calendar.calendarDays.get(dateIndex).listOfObjective.size()) {
+                CalendarApp.calendar.calendarDays.get(dateIndex).listOfObjective.get(positionIndex).markComplete();
+            } else {
+                System.out.println("No objective to mark as complete here");
+            }
+        } catch (NumberFormatException e) {
+            //do nothing
+        } finally {
+            playSound("./data/blip.wav");
+            clearScreen();
+            initializeStarter();
+        }
+    }
 
     private void clearScreen() {
         panel.removeAll();
