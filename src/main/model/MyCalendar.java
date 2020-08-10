@@ -29,6 +29,7 @@ public class MyCalendar implements Saveable {
     }
 
 
+    // EFFECTS: records calendar to data
     @Override
     public void save(PrintWriter printWriter) {
         for (Day day: calendarDays) {

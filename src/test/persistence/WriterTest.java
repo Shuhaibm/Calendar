@@ -15,6 +15,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+//Tests Writer class
 public class WriterTest {
 
     private static final String TEST_FILE = "./data/testCalendarFile1.txt";

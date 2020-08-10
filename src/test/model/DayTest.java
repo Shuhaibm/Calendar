@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//Tests Day class
 public class DayTest {
     Day myDay;
     Objective anObjective;

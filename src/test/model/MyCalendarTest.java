@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//Tests calendar class
 class MyCalendarTest {
     MyCalendar myCalendar;
 

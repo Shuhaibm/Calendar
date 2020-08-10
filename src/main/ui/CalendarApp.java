@@ -20,9 +20,7 @@ public class CalendarApp {
     private Scanner input;
     public static MyCalendar calendar = new MyCalendar();
     private ArrayList dates = new ArrayList();
-
     private static String CALENDARS_FILE = "./data/calendars.txt";
-
     CalendarWindow calendarWindow;
 
 

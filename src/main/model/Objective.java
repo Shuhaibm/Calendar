@@ -19,16 +19,6 @@ public class Objective {
     }
 
 
-
-    //May not need this method!!!
-    //REQUIRES: this.note to have no value
-    //MODIFIES: this
-    //EFFECTS: sets the note for the objective to the given parameter
-    //public void setNote(String note) {
-    //    this.note = note;
-    //}
-
-
     //MODIFIES: this
     //EFFECTS: sets the completeStatus for the objective to true and adds COMPLETE to note
     public void markComplete() {

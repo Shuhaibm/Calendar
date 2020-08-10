@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import java.io.File;
 
-
+// Calendar graphical user interface
 public class CalendarWindow extends JFrame implements ActionListener {
     JTextField textField;
     JComboBox<Integer> choiceBox;
@@ -23,6 +23,7 @@ public class CalendarWindow extends JFrame implements ActionListener {
     JFrame frame;
     JPanel panel;
 
+    // EFFECTS: initializes the graphical user interface
     public CalendarWindow() {
         frame = new JFrame();
         panel = new JPanel();
@@ -30,8 +31,8 @@ public class CalendarWindow extends JFrame implements ActionListener {
 
     }
 
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS:  Presents a menu option for the user to choose a command
     public void initializeStarter() {
         clearScreen();
         viewButton = new JButton("View Calendar");
@@ -58,6 +59,8 @@ public class CalendarWindow extends JFrame implements ActionListener {
         setUpScreen();
     }
 
+    // MODIFIES: this
+    // EFFECTS:  Presents a screen for adding an objective, where the user enters required information
     public void initializeAdder() {
         clearScreen();
 
@@ -87,6 +90,8 @@ public class CalendarWindow extends JFrame implements ActionListener {
         setUpScreen();
     }
 
+    // MODIFIES: this
+    // EFFECTS:  Presents a screen for removing an objective, where the user enters required information
     private void initializeRemover() {
         clearScreen();
 
@@ -115,6 +120,8 @@ public class CalendarWindow extends JFrame implements ActionListener {
         setUpScreen();
     }
 
+    // MODIFIES: this
+    // EFFECTS:  Presents a screen for completing an objective, where the user enters required information
     private void initializeCompleter() {
         clearScreen();
 
@@ -143,8 +150,8 @@ public class CalendarWindow extends JFrame implements ActionListener {
         setUpScreen();
     }
 
-
-    //EFFECTS: Shows the calendar (everyday + objectives
+    // MODIFIES: this
+    // EFFECTS:  Presents a screen for showing the calendar, where the user enters required information
     private void initializeShower() {
         clearScreen();
 
@@ -166,7 +173,7 @@ public class CalendarWindow extends JFrame implements ActionListener {
         setUpScreen();
     }
 
-
+    // EFFECTS:  Reads the user's action performed and runs the corresponding method
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("View Calendar")) {
             initializeShower();
@@ -194,7 +201,8 @@ public class CalendarWindow extends JFrame implements ActionListener {
     }
 
 
-
+    // MODIFIES: this
+    // EFFECTS:  Prints out all the objectives in a day
     private void printDay() {
         clearScreen();
 
@@ -236,7 +244,8 @@ public class CalendarWindow extends JFrame implements ActionListener {
         initializeStarter();
     }
 
-
+    // REQUIRES: audio file to exist
+    // EFFECTS:  Plays the specified audio file
     public void playSound(String addSound) {
 
         // source for sound files: https://www.wavsource.com/sfx/sfx.htm
@@ -303,12 +312,16 @@ public class CalendarWindow extends JFrame implements ActionListener {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS:  Clears the current panel
     private void clearScreen() {
         panel.removeAll();
         revalidate();
         repaint();
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets up the repetitive commands for the panel and the frame
     private void setUpScreen() {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         panel.setLayout(new GridLayout(0, 1));
