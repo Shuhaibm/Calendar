@@ -1,5 +1,6 @@
 package persistence;
 
+import exceptions.TooManyObjectivesException;
 import model.MyCalendar;
 import model.Objective;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +26,11 @@ public class WriterTest {
     @BeforeEach
     void runBefore() throws FileNotFoundException, UnsupportedEncodingException {
         calendar = new MyCalendar();
-        calendar.calendarDays.get(0).addObjective(new Objective("asdf"));
+        try {
+            calendar.calendarDays.get(0).addObjective(new Objective("asdf"));
+        } catch (TooManyObjectivesException e) {
+            fail();
+        }
         testWriter = new Writer(new File(TEST_FILE));
 
     }

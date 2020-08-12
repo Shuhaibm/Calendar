@@ -1,5 +1,7 @@
 package ui;
 
+import exceptions.NoSuchObjectiveException;
+import exceptions.TooManyObjectivesException;
 import model.Objective;
 
 import javax.sound.sampled.*;
@@ -235,7 +237,11 @@ public class CalendarWindow extends JFrame implements ActionListener {
 
         if (!objectiveNote.equals("")) {
             Objective objective = new Objective(objectiveNote);
-            CalendarApp.calendar.calendarDays.get(dateIndex).addObjective(objective);
+            try {
+                CalendarApp.calendar.calendarDays.get(dateIndex).addObjective(objective);
+            } catch (TooManyObjectivesException e) {
+                System.out.println("Too many objectives for this day");
+            }
         }
 
         playSound("./data/bloop_x.wav");
@@ -279,7 +285,11 @@ public class CalendarWindow extends JFrame implements ActionListener {
             int positionIndex = Integer.parseInt(textField.getText()) - 1;
 
             if (positionIndex < CalendarApp.calendar.calendarDays.get(dateIndex).listOfObjective.size()) {
-                CalendarApp.calendar.calendarDays.get(dateIndex).removeObjective(positionIndex);
+                try {
+                    CalendarApp.calendar.calendarDays.get(dateIndex).removeObjective(positionIndex);
+                } catch (NoSuchObjectiveException e) {
+                    System.out.println("No such objective");
+                }
             }
 
         } catch (NumberFormatException e) {

@@ -1,11 +1,17 @@
 package model;
 
+import exceptions.NoSuchObjectiveException;
+import exceptions.TooManyObjectivesException;
+
 import java.util.ArrayList;
 
 //A day in the calendar
 public class Day {
     public int date;
     public ArrayList<Objective> listOfObjective;
+
+    public static final int MAXOBJECTIVES = 10;
+
 
 
     //EFFECTS: creates new Day, set the date to the given parameter, creates an arraylist
@@ -23,14 +29,22 @@ public class Day {
     //Too many exception
     //MODIFIES: this
     //EFFECTS: adds the given Objective to listOfObjective
-    public void addObjective(Objective objective) {
-        this.listOfObjective.add(objective);
+    public void addObjective(Objective objective) throws TooManyObjectivesException {
+        if (this.listOfObjective.size() < MAXOBJECTIVES) {
+            this.listOfObjective.add(objective);
+        } else {
+            throw new TooManyObjectivesException();
+        }
     }
 
     //MODIFIES: this
     //EFFECTS: removes the Objective with the given index from listOfObjective
-    public void removeObjective(int index) {
-        this.listOfObjective.remove(index);
+    public void removeObjective(int index) throws NoSuchObjectiveException {
+        if (index < listOfObjective.size()) {
+            this.listOfObjective.remove(index);
+        } else {
+            throw new NoSuchObjectiveException();
+        }
     }
 
 

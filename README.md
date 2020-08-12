@@ -27,7 +27,7 @@ been completed.
 - As a user, I want to have the option of loading the previously saved Calendar when the program starts
  
  
- ## Instructins for Grader
+ ## Instructions for Grader
 
 - You can generate the first required event by clicking the "Add an Objective" button, entering an 
   objective in the text box, selecting the date you want to add to from the drop down menu, 
@@ -47,3 +47,22 @@ been completed.
   "Remove" button for the second sound.
 - You can save the state of my application by clicking the "Save Calendar" button.
 - You can reload the state of my application by clicking the "Load Calendar" button.
+
+
+## Phase 4: Task 2
+For Task 2, I chose the first option, "Test and design a class that is robust". I have added two 
+exceptions to my Day class. 
+- The first exception I added is called TooManyObjectivesException, and 
+  I added it to my addObjective() method in the Day class. This exception helps puts a limit to how 
+  many objectives a user can add to a single day. This is tested in the DayTest class, testAddObjective()
+  is the test where the exception is not excepted, and testTooManyObjectivesException() is the test
+  where the exception is expected.
+- The second exception I have added is called the NoSuchObjectiveException, and I have added it to 
+  the removeObjective() method in the Day class. This exception is called when the position of the 
+  objective entered does not refer to an objective in the selected day. This is tested in the DayTest 
+  class, testRemoveObjective() is the test where the exception is not excepted and 
+  testNoSuchObjective() is the test where the exception is expected.
+
+
+ 
+

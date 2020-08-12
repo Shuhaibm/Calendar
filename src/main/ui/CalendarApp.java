@@ -1,5 +1,7 @@
 package ui;
 
+import exceptions.NoSuchObjectiveException;
+import exceptions.TooManyObjectivesException;
 import model.Day;
 import model.MyCalendar;
 import model.Objective;
@@ -38,7 +40,7 @@ public class CalendarApp {
         String command;
 
         calendarWindow = new CalendarWindow();
-
+/*
         while (runApp) {
             displayMenu();
             command = input.next();
@@ -48,7 +50,7 @@ public class CalendarApp {
             } else {
                 processCommand(command);
             }
-        }
+        }*/
     }
 
     //EFFECTS: displays menu of options to user
@@ -113,9 +115,6 @@ public class CalendarApp {
         }
     }
 
-
-
-
     //EFFECTS: Shows the calendar (everyday + objectives
     private void showMyCalendar() {
         for (Day day : calendar.calendarDays) {
@@ -135,7 +134,11 @@ public class CalendarApp {
         System.out.println("Please enter the objective you want to add");
         String objectiveNote = input.next();
         Objective objective = new Objective(objectiveNote);
-        calendar.calendarDays.get(dateIndex).addObjective(objective);
+        try {
+            calendar.calendarDays.get(dateIndex).addObjective(objective);
+        } catch (TooManyObjectivesException e) {
+            System.out.println("Too many objectives for this day");
+        }
     }
 
 
@@ -149,7 +152,11 @@ public class CalendarApp {
         int objectiveIndex = Integer.parseInt(objectivePosition) - 1;
 
         if (objectiveIndex < calendar.calendarDays.get(dateIndex).listOfObjective.size()) {
-            calendar.calendarDays.get(dateIndex).removeObjective(objectiveIndex);
+            try {
+                calendar.calendarDays.get(dateIndex).removeObjective(objectiveIndex);
+            } catch (NoSuchObjectiveException e) {
+                System.out.println("No such objective");
+            }
         } else {
             System.out.println("No objective to remove here");
         }
