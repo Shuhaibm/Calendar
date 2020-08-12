@@ -284,13 +284,12 @@ public class CalendarWindow extends JFrame implements ActionListener {
         try {
             int positionIndex = Integer.parseInt(textField.getText()) - 1;
 
-            if (positionIndex < CalendarApp.calendar.calendarDays.get(dateIndex).listOfObjective.size()) {
-                try {
-                    CalendarApp.calendar.calendarDays.get(dateIndex).removeObjective(positionIndex);
-                } catch (NoSuchObjectiveException e) {
-                    System.out.println("No such objective");
-                }
+            try {
+                CalendarApp.calendar.calendarDays.get(dateIndex).removeObjective(positionIndex);
+            } catch (NoSuchObjectiveException e) {
+                System.out.println("No such objective");
             }
+
 
         } catch (NumberFormatException e) {
             //do nothing
