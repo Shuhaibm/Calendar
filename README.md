@@ -65,12 +65,20 @@ exceptions to my Day class.
   
 ## Phase 4: Task 3
 For Task 3, here are the decisions I made to enhance the code design:
-- In order to make the code more readable, I took out the code that sets up the screen, and put it
-  into the setUpScreen() method in my CalendarWindow class
-- In order to make the code more readable, I took out the code that clears the screen, and put it
-  into the clearScreen() method in my CalendarWindow class  
-- In order to make the code more readable, I took out the code that plays a sound, and put it
-  into the playSound() method in my CalendarWindow class    
+- In order to make the code more readable and for cohesion of my methods,  I took out the code that 
+  sets up the screen, and put it into the setUpScreen() method in my CalendarWindow class
+- In order to make the code more readable  and for cohesion of my methods, I took out the code that 
+  clears the screen, and put it into the clearScreen() method in my CalendarWindow class  
+- In order to make the code more readable and for cohesion of my methods, I took out the code that 
+  plays a sound, and put it into the playSound() method in my CalendarWindow class
+  
+- To improve the cohesion of my CalendarWindow class, and to enforce the Single Responsibility Principle,
+  I created multiple subclasses that carry out the methods that were originally in the CalendarWindow
+  class. I created a CalendarWindowAdd class, that is responsible for when the user is adding an objective.
+  I created a CalendarWindowRemove class, that is responsible for when the user is removing an objective.
+  I created a CalendarWindowComplete class, that is responsible for when the user is completing an objective.
+  I created a CalendarWindowView class, that is responsible for when the user is viewing an objective. 
+      
  
  
 
