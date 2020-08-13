@@ -2,7 +2,7 @@ package ui;
 
 import javax.swing.*;
 
-public class CalendarWindowComplete extends CalendarWindow {
+public class CalendarWindowComplete {
     // MODIFIES: this
     // EFFECTS:  Presents a screen for completing an objective, where the user enters required information
     public static void initializeCompleter(CalendarWindow calwin) {

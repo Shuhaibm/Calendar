@@ -4,7 +4,7 @@ import exceptions.NoSuchObjectiveException;
 
 import javax.swing.*;
 
-public class CalendarWindowRemove extends CalendarWindow {
+public class CalendarWindowRemove {
 
     // MODIFIES: this
     // EFFECTS:  Presents a screen for removing an objective, where the user enters required information

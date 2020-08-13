@@ -5,7 +5,7 @@ import model.Objective;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class CalendarWindowView extends CalendarWindow {
+public class CalendarWindowView {
 
     // MODIFIES: this
     // EFFECTS:  Presents a screen for showing the calendar, where the user enters required information

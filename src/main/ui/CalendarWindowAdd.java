@@ -7,7 +7,7 @@ import javax.swing.*;
 
 
 //Add functions of CalendarWindow
-public class CalendarWindowAdd extends CalendarWindow {
+public class CalendarWindowAdd {
 
 
     // MODIFIES: this
