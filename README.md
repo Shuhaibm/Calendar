@@ -62,7 +62,17 @@ exceptions to my Day class.
   objective entered does not refer to an objective in the selected day. This is tested in the DayTest 
   class, testRemoveObjective() is the test where the exception is not excepted and 
   testNoSuchObjective() is the test where the exception is expected.
-
+  
+## Phase 4: Task 3
+For Task 3, here are the decisions I made to enhance the code design:
+- In order to make the code more readable, I took out the code that sets up the screen, and put it
+  into the setUpScreen() method in my CalendarWindow class
+- In order to make the code more readable, I took out the code that clears the screen, and put it
+  into the clearScreen() method in my CalendarWindow class  
+- In order to make the code more readable, I took out the code that plays a sound, and put it
+  into the playSound() method in my CalendarWindow class    
+ 
+ 
 
  
 

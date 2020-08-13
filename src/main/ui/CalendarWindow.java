@@ -14,23 +14,25 @@ import java.util.ArrayList;
 
 import java.io.File;
 
+
+
 // Calendar graphical user interface
 public class CalendarWindow extends JFrame implements ActionListener {
+
     JTextField textField;
     JComboBox<Integer> choiceBox;
     JButton addButton;
     JButton removeButton;
     JButton viewButton;
-
     JFrame frame;
     JPanel panel;
+
 
     // EFFECTS: initializes the graphical user interface
     public CalendarWindow() {
         frame = new JFrame();
         panel = new JPanel();
         initializeStarter();
-
     }
 
     // MODIFIES: this
@@ -49,7 +51,6 @@ public class CalendarWindow extends JFrame implements ActionListener {
         saveButton.addActionListener(this);
         JButton loadButton = new JButton("Load Calendar");
         loadButton.addActionListener(this);
-
 
         panel.add(viewButton);
         panel.add(addButton);
@@ -77,7 +78,6 @@ public class CalendarWindow extends JFrame implements ActionListener {
 
         JLabel text1 = new JLabel("Date:", SwingConstants.LEFT);
         JLabel text2 = new JLabel("Objective:", SwingConstants.LEFT);
-
 
         addButton = new JButton("Add");
         addButton.addActionListener(this);
@@ -199,6 +199,7 @@ public class CalendarWindow extends JFrame implements ActionListener {
             initializeCompleter();
         } else if (e.getActionCommand().equals("Complete")) {
             doMarkComplete();
+
         }
     }
 
@@ -250,32 +251,6 @@ public class CalendarWindow extends JFrame implements ActionListener {
         initializeStarter();
     }
 
-    // REQUIRES: audio file to exist
-    // EFFECTS:  Plays the specified audio file
-    public void playSound(String addSound) {
-
-        // source for sound files: https://www.wavsource.com/sfx/sfx.htm
-
-        AudioInputStream audioInputStream = null;
-        try {
-            audioInputStream = AudioSystem.getAudioInputStream(new File(addSound).getAbsoluteFile());
-        } catch (UnsupportedAudioFileException | IOException e) {
-            e.printStackTrace();
-        }
-        Clip clip = null;
-        try {
-            clip = AudioSystem.getClip();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
-        try {
-            clip.open(audioInputStream);
-        } catch (IOException | LineUnavailableException | NullPointerException e) {
-            e.printStackTrace();
-        }
-        clip.start();
-    }
-
     //MODIFIES: calendar
     //EFFECTS: removes specified objective from the specified date
     private void doRemoveObjective() {
@@ -302,7 +277,7 @@ public class CalendarWindow extends JFrame implements ActionListener {
 
     //MODIFIES: calendar
     //EFFECTS: removes specified objective from the specified date
-    private void doMarkComplete() {
+    public void doMarkComplete() {
         int dateIndex = choiceBox.getSelectedIndex();
 
         try {
@@ -320,6 +295,34 @@ public class CalendarWindow extends JFrame implements ActionListener {
             initializeStarter();
         }
     }
+
+        // REQUIRES: audio file to exist
+        // EFFECTS:  Plays the specified audio file
+    public void playSound(String addSound) {
+
+        // source for sound files: https://www.wavsource.com/sfx/sfx.htm
+
+        AudioInputStream audioInputStream = null;
+        try {
+            audioInputStream = AudioSystem.getAudioInputStream(new File(addSound).getAbsoluteFile());
+        } catch (UnsupportedAudioFileException | IOException e) {
+            e.printStackTrace();
+        }
+        Clip clip = null;
+        try {
+            clip = AudioSystem.getClip();
+        } catch (LineUnavailableException e) {
+            e.printStackTrace();
+        }
+        try {
+            assert clip != null;
+            clip.open(audioInputStream);
+        } catch (IOException | LineUnavailableException | NullPointerException e) {
+            e.printStackTrace();
+        }
+        clip.start();
+    }
+
 
     // MODIFIES: this
     // EFFECTS:  Clears the current panel
