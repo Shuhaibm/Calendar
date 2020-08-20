@@ -2,19 +2,12 @@
 
 ## Calendar
 
-All throughout highschool, my teachers **constantly** encouraged the use of agendas, but I never found 
-the need to use one. However, once I entered university, it immediately became clear that an agenda
-would make my life much easier, and help me stay on top of classes. I began to print out a calendar
-every month, and list out all the things I needed to get done. These included:
-- Assignments
-- Forms/Paperwork
-- Meetings
-- Events 
-
-I will stop wasting paper and take advantage of technology by creating a calendar application. I will
-use this application instead of what I have been doing up until now. The application will present a 
-monthly calendar, where the user can add items to a specific day, and check them off when they have 
-been completed. 
+All throughout highschool, I have been ecouraged to use agendas, but I never found the need to use one. 
+However, once I entered university, it immediately became clear that an agenda would make my life much 
+easier, and help me stay on top of classes. I began to print out a calendar every month, and list out 
+all the things I needed to get done.
+I will make a Calendar application that will allow me to do so, it will present a monthly calendar, 
+where the user can add items to a specific day, and check them off when they have been completed. 
 
 
 ## User Stories
@@ -26,8 +19,6 @@ been completed.
 - As a user, I want to be able to the option to save my Calendar file when I quit
 - As a user, I want to have the option of loading the previously saved Calendar when the program starts
  
- 
- ## Instructions for Grader
 
 - You can generate the first required event by clicking the "Add an Objective" button, entering an 
   objective in the text box, selecting the date you want to add to from the drop down menu, 
@@ -48,39 +39,4 @@ been completed.
 - You can save the state of my application by clicking the "Save Calendar" button.
 - You can reload the state of my application by clicking the "Load Calendar" button.
 
-
-## Phase 4: Task 2
-For Task 2, I chose the first option, "Test and design a class that is robust". I have added two 
-exceptions to my Day class. 
-- The first exception I added is called TooManyObjectivesException, and 
-  I added it to my addObjective() method in the Day class. This exception helps puts a limit to how 
-  many objectives a user can add to a single day. This is tested in the DayTest class, testAddObjective()
-  is the test where the exception is not excepted, and testTooManyObjectivesException() is the test
-  where the exception is expected.
-- The second exception I have added is called the NoSuchObjectiveException, and I have added it to 
-  the removeObjective() method in the Day class. This exception is called when the position of the 
-  objective entered does not refer to an objective in the selected day. This is tested in the DayTest 
-  class, testRemoveObjective() is the test where the exception is not excepted and 
-  testNoSuchObjective() is the test where the exception is expected.
-  
-## Phase 4: Task 3
-For Task 3, here are the decisions I made to enhance the code design:
-- In order to make the code more readable and for cohesion of my methods,  I took out the code that 
-  sets up the screen, and put it into the setUpScreen() method in my CalendarWindow class
-- In order to make the code more readable  and for cohesion of my methods, I took out the code that 
-  clears the screen, and put it into the clearScreen() method in my CalendarWindow class  
-- In order to make the code more readable and for cohesion of my methods, I took out the code that 
-  plays a sound, and put it into the playSound() method in my CalendarWindow class
-  
-- To improve the cohesion of my CalendarWindow class, and to enforce the Single Responsibility Principle,
-  I created multiple subclasses that carry out the methods that were originally in the CalendarWindow
-  class. I created a CalendarWindowAdd class, that is responsible for when the user is adding an objective.
-  I created a CalendarWindowRemove class, that is responsible for when the user is removing an objective.
-  I created a CalendarWindowComplete class, that is responsible for when the user is completing an objective.
-  I created a CalendarWindowView class, that is responsible for when the user is viewing an objective. 
-      
- 
- 
-
- 
 
