@@ -38,5 +38,3 @@ where the user can add items to a specific day, and check them off when they hav
   "Remove" button for the second sound.
 - You can save the state of my application by clicking the "Save Calendar" button.
 - You can reload the state of my application by clicking the "Load Calendar" button.
-
-
