@@ -2,7 +2,7 @@
 
 ## Calendar
 
-All throughout highschool, I have been ecouraged to use agendas, but I never found the need to use one. 
+All throughout highschool, I have been encouraged to use agendas, but I never found the need to use one. 
 However, once I entered university, it immediately became clear that an agenda would make my life much 
 easier, and help me stay on top of classes. I began to print out a calendar every month, and list out 
 all the things I needed to get done.
